@@ -20,11 +20,11 @@
   width: 98%;
 }
 
-/* .cat-actions {
+.team-actions {
   margin-top: 20px;
 }
 
-.feedings-toy-container {
+/* .feedings-toy-container {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -169,9 +169,14 @@
 .toy-container a {
   text-decoration: none;
   color: #111;
+} */
+
+.btn {
+  padding: 3px 10px;
+  margin-left: 10px;
 }
 
-.toy-container .btn {
+/* .toy-container {
   padding: 3px 10px;
   margin-left: 10px;
 } */

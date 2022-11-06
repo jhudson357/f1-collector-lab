@@ -21,6 +21,10 @@
     <p>Constructors' Championships: {{ team.constructors_championships }}</p>
     <p>Drivers' Championships: {{ team.drivers_championships }}</p>
     <p>Race Victories: {{ team.race_wins }}</p>
+    <div class='team-actions'>
+      <a href="{% url 'teams_update' team.id %}" class='btn warn'>Edit</a>
+      <a href="{% url 'teams_delete' team.id %}" class='btn danger'>Delete</a>
+    </div>
   </div>
 </section>
 

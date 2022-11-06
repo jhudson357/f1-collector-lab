@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Team
 
 # Create your views here.
@@ -20,3 +20,11 @@ def teams_detail(request, team_id):
 class CreateTeam(CreateView):
   model = Team
   fields = '__all__'
+
+class TeamUpdate(UpdateView):
+  model = Team
+  fields = '__all__'
+
+class TeamDelete(DeleteView):
+  model = Team
+  success_url = '/teams/'
