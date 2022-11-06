@@ -22,19 +22,21 @@
 <section class="card-container">
   {% for team in teams %}
     <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img 
-            src="" 
-            alt="Team Logo"
-          >
+      <a href="/teams/{{ team.id }}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img 
+              src="" 
+              alt="Team Logo"
+            >
+          </div>
+          <h2 class="card-title">{{ team.name }}</h2>
+          <h3>{{ team.location }}</h3>
+          <p>Constructors' Championships: {{ team.constructors_championships }}</p>
+          <p>Drivers' Championships: {{ team.drivers_championships }}</p>
+          <p>Race Victories: {{ team.race_wins }}</p>
         </div>
-        <h2 class="card-title">{{ team.name }}</h2>
-        <h3>{{ team.location }}</h3>
-        <p>Constructors' Championships: {{ team.constructors_championships }}</p>
-        <p>Drivers' Championships: {{ team.drivers_championships }}</p>
-        <p>Race Victories: {{ team.race_wins }}</p>
-      </div>
+      </a>
     </div>
   {% endfor %}
 </section>
