@@ -28,7 +28,7 @@ body {
   --nav-bg-ff: rgba(255, 24, 1, .4);
   --borders: #FF1801 solid 2px;
   --text-color: rgb(17, 20, 17);
-  --link-hover-color: #640800;
+  --link-hover-color: #FF1801;
   --button-bg: rgb(245, 245, 245);
   --button-bg-hover: rgb(226, 226, 226);
   --submit: rgb(26, 128, 0);

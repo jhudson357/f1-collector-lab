@@ -1,8 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
-
 class Team:
   def __init__(self, name, location, constructors_championships, drivers_championships, race_wins):
     self.name = name
@@ -19,7 +17,7 @@ teams = [
 ]
 
 def home(request):
-  return HttpResponse('<h1>F1 Collector</h1>')
+  return render(request, 'home.html')
 
 def about(request):
   return render(request, 'about.html')

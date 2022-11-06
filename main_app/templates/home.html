@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class='logo-container'>
+  <div class='f1-container'>
+    <img src="{% static 'images/just-f1-logo.svg' %}" alt="F1 logo">
+  </div>
+  <img src="{% static 'images/collector-text.svg' %} " alt="Text reads: collector">
+</section>
+
+{% endblock %}
