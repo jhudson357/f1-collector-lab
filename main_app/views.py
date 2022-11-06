@@ -1,13 +1,7 @@
 from django.shortcuts import render
+from .models import Team
 
 # Create your views here.
-# class Team:
-#   def __init__(self, name, location, constructors_championships, drivers_championships, race_wins):
-#     self.name = name
-#     self.location = location
-#     self.constructors_championships = constructors_championships
-#     self.drivers_championships = drivers_championships
-#     self.race_wins = race_wins
 
 # teams = [
 #   Team('Red Bull Racing', 'Milton Keynes, England, UK', 5, 6, 91),
@@ -23,4 +17,5 @@ def about(request):
   return render(request, 'about.html')
 
 def teams_index(request):
+  teams = Team.objects.all()
   return render(request, 'teams/index.html', { 'teams': teams })
