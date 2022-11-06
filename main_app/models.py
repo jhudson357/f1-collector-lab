@@ -11,3 +11,7 @@ class Team(models.Model):
 
   def __str__(self):
     return self.name
+
+  def get_absolute_url(self):
+      return reverse('teams_detail', kwargs={'team_id': self.id})
+  

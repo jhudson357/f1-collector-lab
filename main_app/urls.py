@@ -10,4 +10,6 @@ urlpatterns = [
   path('teams/', views.teams_index, name='teams_index'),
   # localhost:8000/teams/int:team_id
   path('teams/<int:team_id>/', views.teams_detail, name='teams_detail'),
+  # localhost:8000/teams/create
+  path('teams/create/', views.CreateTeam.as_view(), name='teams_create'),
 ]
