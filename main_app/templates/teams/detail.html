@@ -28,4 +28,69 @@
   </div>
 </section>
 
+{% comment %} <div class="drivers-positions-container">
+  <section class="drivers">
+    <div class="subsection-title">
+      <h2>Drivers</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Nationality</th>
+          <th>Start Year</th>
+          <th>Wins</th>
+          <th>Championships</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for driver in team.driver_set.all %}
+        <tr>
+          <td>{{driver.name}}</td>
+          <td>{{driver.age}}</td>
+          <td>{{driver.nationality}}</td>
+          <td>{{driver.start_year}}</td>
+          <td>{{driver.wins}}</td>
+          <td>{{driver.championships}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div> {% endcomment %}
+
+<div class="drivers-positions-container">
+  <section class="drivers">
+    <div class="subsection-title">
+      <h2>Drivers</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Nationality</th>
+          <th>Start Year</th>
+          <th>Wins</th>
+          <th>Championships</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for driver in team.driver_set.all %}
+          <tr>
+            <td>{{driver.name}}</td>
+            <td>{{driver.age}}</td>
+            <td>{{driver.nationality}}</td>
+            <td>{{driver.start_year}}</td>
+            <td>{{driver.wins}}</td>
+            <td>{{driver.championships}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+
+
 {% endblock %}
