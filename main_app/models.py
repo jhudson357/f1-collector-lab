@@ -15,3 +15,14 @@ class Team(models.Model):
   def get_absolute_url(self):
       return reverse('teams_detail', kwargs={'team_id': self.id})
   
+class Driver(models.Model):
+  name = models.CharField(max_length=100)
+  age = models.IntegerField()
+  nationality = models.CharField(max_length = 20)
+  start_year = models.IntegerField()
+  wins = models.IntegerField()
+  championships = models.IntegerField()
+  team = models.ForeignKey(Team, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.name
