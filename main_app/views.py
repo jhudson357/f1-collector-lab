@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Team
+from django.views.generic import ListView, DetailView
+from .models import Team, Position
 from .forms import DriverForm
 
 # Create your views here.
@@ -41,3 +42,21 @@ def add_driver(request, team_id):
     new_driver.team_id = team_id
     new_driver.save()
   return redirect('teams_detail', team_id=team_id)
+
+class PositionCreate(CreateView):
+  model = Position
+  fields = '__all__'
+
+class PositionList(ListView):
+  model = Position
+
+class PositionDetail(DetailView):
+  model = Position
+
+class PositionUpdate(UpdateView):
+  model = Position
+  fields = '__all__'
+
+class PositionDelete(DeleteView):
+  model = Position
+  success_url = '/positions/'

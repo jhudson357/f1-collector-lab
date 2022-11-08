@@ -18,4 +18,10 @@ urlpatterns = [
   path('teams/<int:pk>/delete/', views.TeamDelete.as_view(), name='teams_delete'),
   # localhost:8000/teams/int:team_id/add_driver
   path('teams/<int:team_id>/add_driver/', views.add_driver, name='add_driver'),
+
+  path('positions/create/', views.PositionCreate.as_view(), name='positions_create'),
+  path('positions/<int:pk>/', views.PositionDetail.as_view(), name='positions_detail'),
+  path('positions/', views.PositionList.as_view(), name='positions_index'),
+  path('positions/<int:pk>/update/', views.PositionUpdate.as_view(), name='positions_update'),
+  path('positions/<int:pk>/delete/', views.PositionDelete.as_view(), name='positions_delete'),
 ]

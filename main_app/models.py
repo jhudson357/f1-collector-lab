@@ -1,6 +1,15 @@
 from django.db import models
 from django.urls import reverse
 
+POSITIONS = (
+  ('A', 'Aero'),
+  ('D', 'Design'),
+  ('F', 'Finance'),
+  ('H', 'HR'),
+  ('M', 'Marketing/Media'),
+  ('R', 'Race Team')
+)
+
 # Create your models here.
 class Team(models.Model):
   name = models.CharField(max_length=100)
@@ -29,3 +38,17 @@ class Driver(models.Model):
 
   def __str__(self):
     return self.name
+
+class Position(models.Model):
+  name = models.CharField(max_length=50)
+  department = models.CharField(
+    max_length=1,
+    choices=POSITIONS,
+    default=POSITIONS[0][0]
+  )
+
+  def __str__(self):
+    return f'{self.name} - {self.get_department_display()}'
+  
+  def get_absolute_url(self):
+    return reverse('positions_detail', kwargs={'pk': self.id})
