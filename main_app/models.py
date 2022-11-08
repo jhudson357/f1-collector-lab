@@ -15,6 +15,9 @@ class Team(models.Model):
   def get_absolute_url(self):
       return reverse('teams_detail', kwargs={'team_id': self.id})
   
+  def drivers_selected(self):
+    return self.driver_set.all().count() >= 2
+  
 class Driver(models.Model):
   name = models.CharField(max_length=100)
   age = models.IntegerField()

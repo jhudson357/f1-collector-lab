@@ -40,6 +40,12 @@
       class='subsection-content'
       autocomplete='off'
     >
+      {% if team.drivers_selected %}
+        <p class='drivers-selected'>{{team.name}} has enough drivers</p>
+      {% else %}
+        <p class='drivers-not-selected'> {{team.name}} needs more drivers</p>
+      {% endif %}
+
       {% csrf_token %}
       {{ driver_form.as_p }}
       <button type='submit' class='btn submit'>Add Driver</button>
