@@ -16,4 +16,6 @@ urlpatterns = [
   path('teams/<int:pk>/update/', views.TeamUpdate.as_view(), name='teams_update'),
   # localhost:8000/teams/int:pk/delete
   path('teams/<int:pk>/delete/', views.TeamDelete.as_view(), name='teams_delete'),
+  # localhost:8000/teams/int:team_id/add_driver
+  path('teams/<int:team_id>/add_driver/', views.add_driver, name='add_driver'),
 ]

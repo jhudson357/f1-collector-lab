@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Team
+from .forms import DriverForm
 
 # Create your views here.
 def home(request):
@@ -15,7 +16,11 @@ def teams_index(request):
 
 def teams_detail(request, team_id):
   team = Team.objects.get(id=team_id)
-  return render(request, 'teams/detail.html', { 'team': team })
+  driver_form = DriverForm()
+  return render(request, 'teams/detail.html', { 
+    'team': team,
+    'driver_form': driver_form
+  })
 
 class CreateTeam(CreateView):
   model = Team
@@ -28,3 +33,11 @@ class TeamUpdate(UpdateView):
 class TeamDelete(DeleteView):
   model = Team
   success_url = '/teams/'
+
+def add_driver(request, team_id):
+  form = DriverForm(request.POST)
+  if form.is_valid():
+    new_driver = form.save(commit=False)
+    new_driver.team_id = team_id
+    new_driver.save()
+  return redirect('teams_detail', team_id=team_id)

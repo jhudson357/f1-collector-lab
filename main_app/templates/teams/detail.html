@@ -28,67 +28,53 @@
   </div>
 </section>
 
-{% comment %} <div class="drivers-positions-container">
-  <section class="drivers">
-    <div class="subsection-title">
-      <h2>Drivers</h2>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Nationality</th>
-          <th>Start Year</th>
-          <th>Wins</th>
-          <th>Championships</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for driver in team.driver_set.all %}
-        <tr>
-          <td>{{driver.name}}</td>
-          <td>{{driver.age}}</td>
-          <td>{{driver.nationality}}</td>
-          <td>{{driver.start_year}}</td>
-          <td>{{driver.wins}}</td>
-          <td>{{driver.championships}}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </section>
-</div> {% endcomment %}
-
 <div class="drivers-positions-container">
   <section class="drivers">
     <div class="subsection-title">
       <h2>Drivers</h2>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Nationality</th>
-          <th>Start Year</th>
-          <th>Wins</th>
-          <th>Championships</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for driver in team.driver_set.all %}
+    <h3>Add a Driver</h3>
+    <form
+      action="{% url 'add_driver' team.id %}"
+      method='post'
+      class='subsection-content'
+      autocomplete='off'
+    >
+      {% csrf_token %}
+      {{ driver_form.as_p }}
+      <button type='submit' class='btn submit'>Add Driver</button>
+    </form>
+    <h3>Current Drivers</h3>
+    {% if team.driver_set.all.count %}
+      <table>
+        <thead>
           <tr>
-            <td>{{driver.name}}</td>
-            <td>{{driver.age}}</td>
-            <td>{{driver.nationality}}</td>
-            <td>{{driver.start_year}}</td>
-            <td>{{driver.wins}}</td>
-            <td>{{driver.championships}}</td>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Nationality</th>
+            <th>Start Year</th>
+            <th>Wins</th>
+            <th>Championships</th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for driver in team.driver_set.all %}
+            <tr>
+              <td>{{driver.name}}</td>
+              <td>{{driver.age}}</td>
+              <td>{{driver.nationality}}</td>
+              <td>{{driver.start_year}}</td>
+              <td>{{driver.wins}}</td>
+              <td>{{driver.championships}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class='subsection-content'>
+        <p>No drivers added to {{team.name}} </p>
+      </div>
+    {% endif %}
   </section>
 </div>
 
