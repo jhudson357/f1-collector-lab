@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 POSITIONS = (
   ('A', 'Aero'),
@@ -32,6 +33,7 @@ class Team(models.Model):
   drivers_championships = models.IntegerField()
   race_wins = models.IntegerField()
   positions = models.ManyToManyField(Position)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.name
