@@ -11,12 +11,27 @@ POSITIONS = (
 )
 
 # Create your models here.
+class Position(models.Model):
+  name = models.CharField(max_length=50)
+  department = models.CharField(
+    max_length=1,
+    choices=POSITIONS,
+    default=POSITIONS[0][0]
+  )
+
+  def __str__(self):
+    return f'{self.name} - {self.get_department_display()}'
+  
+  def get_absolute_url(self):
+    return reverse('positions_detail', kwargs={'pk': self.id})
+
 class Team(models.Model):
   name = models.CharField(max_length=100)
   location = models.CharField(max_length=100)
   constructors_championships = models.IntegerField()
   drivers_championships = models.IntegerField()
   race_wins = models.IntegerField()
+  positions = models.ManyToManyField(Position)
 
   def __str__(self):
     return self.name
@@ -38,17 +53,3 @@ class Driver(models.Model):
 
   def __str__(self):
     return self.name
-
-class Position(models.Model):
-  name = models.CharField(max_length=50)
-  department = models.CharField(
-    max_length=1,
-    choices=POSITIONS,
-    default=POSITIONS[0][0]
-  )
-
-  def __str__(self):
-    return f'{self.name} - {self.get_department_display()}'
-  
-  def get_absolute_url(self):
-    return reverse('positions_detail', kwargs={'pk': self.id})

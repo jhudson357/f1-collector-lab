@@ -17,15 +17,17 @@ def teams_index(request):
 
 def teams_detail(request, team_id):
   team = Team.objects.get(id=team_id)
+  positions_team_doesnt_have = Position.objects.exclude(id__in = team.positions.all().values_list('id'))
   driver_form = DriverForm()
   return render(request, 'teams/detail.html', { 
     'team': team,
-    'driver_form': driver_form
+    'driver_form': driver_form,
+    'positions': positions_team_doesnt_have
   })
 
 class CreateTeam(CreateView):
   model = Team
-  fields = '__all__'
+  fields = ['name', 'location', 'constructors_championships', 'drivers_championships', 'race_wins']
 
 class TeamUpdate(UpdateView):
   model = Team
@@ -60,3 +62,7 @@ class PositionUpdate(UpdateView):
 class PositionDelete(DeleteView):
   model = Position
   success_url = '/positions/'
+
+def assoc_position(request, team_id, position_id):
+  Team.objects.get(id=team_id).positions.add(position_id)
+  return redirect('teams_detail', team_id=team_id)

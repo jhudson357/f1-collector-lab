@@ -41,11 +41,11 @@
   margin: 0 8px;
 }
 
-/* .toy-container {
+.position-container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-} */
+}
 
 .color-block {
   opacity: 0.8;
@@ -56,19 +56,19 @@
 
 .drivers-not-selected,
 .drivers-selected,
-.no-toys,
-.all-toys {
+.no-positions,
+.all-positions {
   margin: 0;
   font-weight: bold;
 }
 
 .drivers-not-selected,
-.no-toys {
+.no-positions {
   color: var(--danger);
 }
 
 .drivers-selected,
-.all-toys {
+.all-positions {
   color: var(--submit);
 }
 
@@ -117,13 +117,13 @@
 } */
 
 .drivers h2,
-.toys h2 {
+.positions h2 {
   font-size: 3.2rem;
   margin: 0;
 }
 
 .drivers h3,
-.toys h3 {
+.positions h3 {
   font-size: var(--font-xl);
   margin: 10px 0;
 }
@@ -164,24 +164,24 @@
   background-color: #f3f3fd;
 }
 
-/* .toy-container p {
+.position-container p {
   margin: 12px 0;
-} */
+}
 
-/* .toy-container a {
+.position-container a {
   text-decoration: none;
   color: #111;
-} */
+}
 
 .btn {
   padding: 3px 10px;
   margin-left: 10px;
 }
 
-/* .toy-container {
+.position-container {
   padding: 3px 10px;
   margin-left: 10px;
-} */
+}
 
 #file-input {
   overflow: hidden;
@@ -223,4 +223,8 @@
   .drivers-positions-container {
     padding: 0 40px;
   }
+}
+
+a > p:hover {
+  color: #FF1801;
 }

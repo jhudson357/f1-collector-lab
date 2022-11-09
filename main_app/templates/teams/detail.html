@@ -15,7 +15,7 @@
   <div class='team-img'>
     <img src="" alt="Team logo">
   </div>
-  <div clas='team-details'>
+  <div class='team-details'>
     <h1>{{ team.name }}</h1>
     <h3>{{ team.location }}</h3>
     <p>Constructors' Championships: {{ team.constructors_championships }}</p>
@@ -81,6 +81,48 @@
         <p>No drivers added to {{team.name}} </p>
       </div>
     {% endif %}
+  </section>
+
+  <section class='positions'>
+    <div class='subsection-title'>
+      <h2>Team Members</h2>
+    </div>
+    <h3>{{team.name}}'s Team</h3>
+    <div class='subsection-content'>
+      {% if team.positions.count %}
+        {% for position in team.positions.all %}
+          <div class='position-container'>
+            <a href="{% url 'positions_detail' position.id %}">
+              <p>{{position.name}} ({{position.get_department_display}})</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class='no-positions'>
+          {{team.name}} hasn't hired any team members
+        </p>
+      {% endif %}
+    </div>
+    <h3>Available Positions</h3>
+    <div class='subsection-content'>
+      {% if positions.count %}
+        {% for position in positions.all %}
+          <div class='position-container'>
+            <a href="{% url 'positions_detail' position.id %}">
+              <p>{{position.name}} ({{position.get_department_display}})</p>
+            </a>
+            <form action="{% url 'assoc_position' team.id position.id %}" method="post">
+              {% csrf_token %}
+              <button type='submit' class='btn submit'>Hire Position</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class='all-positions'>
+          {{team.name}} has hired all of the available positions
+        </p>
+      {% endif %}
+    </div>
   </section>
 </div>
 
