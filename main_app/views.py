@@ -42,7 +42,7 @@ class CreateTeam(LoginRequiredMixin, CreateView):
 
 class TeamUpdate(LoginRequiredMixin, UpdateView):
   model = Team
-  fields = '__all__'
+  fields = ['name', 'location', 'constructors_championships', 'drivers_championships', 'race_wins']
 
 class TeamDelete(LoginRequiredMixin, DeleteView):
   model = Team

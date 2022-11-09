@@ -20,12 +20,12 @@
     <div class="card">
       <a href="{% url 'teams_detail' team.id %}">
         <div class="card-content">
-          <div class="card-img-container">
+          {% comment %} <div class="card-img-container">
             <img 
               src="" 
               alt="Team Logo"
             >
-          </div>
+          </div> {% endcomment %}
           <h2 class="card-title">{{ team.name }}</h2>
           <h3>{{ team.location }}</h3>
           <p>Constructors' Championships: {{ team.constructors_championships }}</p>
